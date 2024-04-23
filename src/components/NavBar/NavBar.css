@@ -14,7 +14,10 @@
     height: 30px;
     width: auto;
 }
-
+.nav-bar__menu-and-cart{
+    display: flex;
+    gap: 6rem;
+}
 .nav-bar__link-item-group {
     list-style: none;
     display: flex;
@@ -25,3 +28,4 @@
 .nav-bar__list-item{
     font-family: sans-serif;
 }
+
