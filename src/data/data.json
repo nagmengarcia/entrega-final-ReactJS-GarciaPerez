@@ -295,6 +295,102 @@
         "price":151670,
         "category":"tibiales",
         "image":""
+    },
+    {
+        "id":"cTuiD86731", 
+        "name":"Protector Bucal Gilbert Academy Clear",
+        "description":"",
+        "price":13799,
+        "category":"bucales",
+        "image":""
+    },
+    {
+        "id":"dFgDh84712", 
+        "name":"Protector Bucal Gilbert Irlanda",
+        "description":"",
+        "price":15799,
+        "category":"bucales",
+        "image":""
+    },
+    {
+        "id":"gHzIk91237", 
+        "name":"Protector Bucal Gilbert Gel Plus",
+        "description":"",
+        "price":19799,
+        "category":"bucales",
+        "image":""
+    },
+    {
+        "id":"kJjLm12387", 
+        "name":"Protector Bucal Gilbert Anatomic Rosa",
+        "description":"",
+        "price":3599,
+        "category":"bucales",
+        "image":""
+    },
+    {
+        "id":"aSZko12483", 
+        "name":"Protector Bucal Gilbert Anatomic Blanco",
+        "description":"",
+        "price":3599,
+        "category":"bucales",
+        "image":""
+    },
+    {
+        "id":"mMkAj12376", 
+        "name":"Protector Bucal Gilbert Anatomic Verde",
+        "description":"",
+        "price":3599,
+        "category":"bucales",
+        "image":""
+    },
+    {
+        "id":"aMmaA12376", 
+        "name":"Protector Bucal Gilbert Viper",
+        "description":"",
+        "price":19599,
+        "category":"bucales",
+        "image":""
+    },
+    {
+        "id":"dROga81237", 
+        "name":"Protector Bucal Gilbert Viper Pro 3",
+        "description":"",
+        "price":27799,
+        "category":"bucales",
+        "image":""
+    },
+    {
+        "id":"zXepP81239", 
+        "name":"Protector Bucal Gilbert Virtuo Dual",
+        "description":"",
+        "price":18999,
+        "category":"bucales",
+        "image":""
+    },
+    {
+        "id":"zXepP81239", 
+        "name":"Protector Bucal TK Unisex",
+        "description":"",
+        "price":4199,
+        "category":"bucales",
+        "image":""
+    },
+    {
+        "id":"bBmeR12239", 
+        "name":"Protector Bucal Malik Sr Rosa",
+        "description":"",
+        "price":4199,
+        "category":"bucales",
+        "image":""
+    },
+    {
+        "id":"bRm0R42279", 
+        "name":"Protector Bucal Malik Sr Azul",
+        "description":"",
+        "price":4199,
+        "category":"bucales",
+        "image":""
     }
 
 
