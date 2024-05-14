@@ -3,13 +3,16 @@ import getProducts from "../../data/data";
 import ItemList from "./ItemList";
 import "./ItemListContainer.css";
 import { useParams } from "react-router-dom";
+import useLoader from "../../hooks/useLoader";
 
 const ItemListContainer = ({ saludo }) => {
   const [products, setProducts] = useState([]);
   const { idCategory } = useParams();
+  const { cargando, mostrarLoader, ocultarLoader, pantallaCarga } = useLoader();
 
   //solo consumir api al principio
   useEffect(() => {
+    mostrarLoader();
     getProducts()
       .then((res) => {
         if (idCategory) {
@@ -24,13 +27,14 @@ const ItemListContainer = ({ saludo }) => {
       })
       .finally(() => {
         console.log("Promesa terminada");
+        ocultarLoader();
       });
   }, [idCategory]);
 
   return (
-    <div>
+    <div className="item-list-container">
       <h2>{saludo}</h2>
-      <ItemList products={products} />
+      {cargando ? pantallaCarga : <ItemList products={products} />}
     </div>
   );
 };

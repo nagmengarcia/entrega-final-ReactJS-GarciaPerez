@@ -38,3 +38,15 @@
     font-size: 1.2rem;
     font-weight: 500;
 }
+
+.item-list-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.loader-container {
+        margin: 0 auto;
+        align-self: center;
+        padding: 120px auto;
+}
