@@ -10,6 +10,7 @@
     justify-content: flex-start;
 }
 .card-item{
+    text-decoration: none;
     max-width: calc( (100% / 4) - 3rem);
     display: flex;
     flex-direction: column;
@@ -22,21 +23,21 @@
 }
 .card-item__img{
     width: auto;
-
 }
 
 .card-item__product-title{
+    font-family: "Anybody", sans-serif;
     margin: 0;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     line-height: calc(1.2rem *1.25);
 }
 
 .card-item__product-price{
+    font-family: "Anybody", sans-serif;
     margin: 0;
     color: rgb(11, 161, 11);
-    font-size: 1.2rem;
-    font-weight: 500;
+    font-size: 1rem;
 }
 
 .item-list-container{
@@ -49,4 +50,10 @@
         margin: 0 auto;
         align-self: center;
         padding: 120px auto;
+}
+
+.saludo{
+    font-family: "Anybody", sans-serif;
+    color: #FCFBF8;
+
 }

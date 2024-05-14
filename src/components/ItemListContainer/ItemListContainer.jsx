@@ -33,7 +33,7 @@ const ItemListContainer = ({ saludo }) => {
 
   return (
     <div className="item-list-container">
-      <h2>{saludo}</h2>
+      <h2 className="saludo">{saludo}</h2>
       {cargando ? pantallaCarga : <ItemList products={products} />}
     </div>
   );
