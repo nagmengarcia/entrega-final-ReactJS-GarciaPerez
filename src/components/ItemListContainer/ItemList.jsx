@@ -1,7 +1,7 @@
 import Item from "./Item";
 const ItemList = ({ products }) => {
   return (
-    <div className="img-container">
+    <div className="card-item-container">
       {products.map((product) => (
         <Item key={product.id} product={product} />
       ))}
