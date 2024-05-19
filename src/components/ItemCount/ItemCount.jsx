@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Counter from "./Counter";
 
-const ItemCount = ({ stock, addProd }) => {
+const ItemCount = ({ stock, addProduct }) => {
   const [count, setCount] = useState(1);
 
   const handleClickDecrement = () => {
@@ -15,7 +15,7 @@ const ItemCount = ({ stock, addProd }) => {
     }
   };
   const handleAddToCart = () => {
-    addProd(count);
+    addProduct(count);
   };
 
   return (

@@ -5,12 +5,15 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const addProdToCart = (newProd) => {
-    setCart([...cart, newProd]);
+  const addProdToCart = (newProduct) => {
+    setCart([...cart, newProduct]);
   };
 
   const totalCartItemAmount = () => {
-    const totalItemAmount = cart.reduce((acc, prod) => acc + prod.quantity, 0);
+    const totalItemAmount = cart.reduce(
+      (acc, product) => acc + product.quantity,
+      0
+    );
     return totalItemAmount;
   };
 
@@ -22,8 +25,9 @@ const CartProvider = ({ children }) => {
   // funcion para eliminar un producto especifico
 
   return (
+    // creamos nuestro componente con el metodo de contexto llamado .Provider , queremos que se comporte como proveedor de contexto de funciones por ejemplo
     <CartContext.Provider
-      value={(cart, addProdToCart, totalCartItemAmount, deleteCart)}
+      value={{ cart, addProdToCart, totalCartItemAmount, deleteCart }}
     >
       {children}
     </CartContext.Provider>

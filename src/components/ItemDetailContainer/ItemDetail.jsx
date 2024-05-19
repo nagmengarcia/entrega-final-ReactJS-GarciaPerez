@@ -1,31 +1,33 @@
 import ItemCount from "../ItemCount/ItemCount";
 import { useContext } from "react";
-import { CartContext } from "../../Context/CartContext";
+import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ product }) => {
   const { addProdToCart } = useContext(CartContext);
 
-  const addProd = (count) => {
-    const prodCart = { product, quantity: count };
-    addProdToCart(prodCart);
+  const addProduct = (count) => {
+    const productCart = { ...product, quantity: count };
+    addProdToCart(productCart);
   };
 
   return (
-    <div className="i-d-c">
+    <div className="item-detail-container">
       <img
-        className="i-d-c-image"
+        className="item-detail-container__image"
         src={product.image}
         alt={product.description}
       />
-      <div className="i-d-c-detailsContainer">
-        <p className="i-d-c-productName">{product.name}</p>
-        <p className="i-d-c-productPrice">AR$ {product.price}</p>
-        <p className="i-d-c-productDescription">
+      <div className="item-detail-container__product-detail">
+        <p className="item-detail-container__product-name">{product.name}</p>
+        <p className="item-detail-container__product-price">
+          AR$ {product.price}
+        </p>
+        <p className="item-detail-container__product-description">
           {product.description === ""
             ? "No hay descripcion para este producto"
             : product.description}
         </p>
-        <ItemCount stock={product.stock} addProd={addProd} />
+        <ItemCount stock={product.stock} addProduct={addProduct} />
       </div>
     </div>
   );

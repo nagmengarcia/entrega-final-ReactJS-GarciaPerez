@@ -11,7 +11,7 @@
     top: -12px;
 }
 
-.nav-bar__cart{
+.nav-bar__cart-widget{
     display: flex;
     flex-direction: row;
     align-items: center;
