@@ -1,29 +1,31 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from "react";
+import Counter from "./Counter";
 
+const ItemCount = ({ stock, addProd }) => {
+  const [count, setCount] = useState(1);
 
-const ItemCount = ({stock}) => {
-    const [count, setCount] = useState(1);
-
-    const addition = () => {
-        if (count < stock ){
-            setCount(count + 1);
-        }
+  const handleClickDecrement = () => {
+    if (count > 1) {
+      setCount(count - 1);
     }
-        
-
-    const substraction = () => {
-        if (count > 1){
-            setCount(count - 1);
-        }
+  };
+  const handleClickIncrement = () => {
+    if (count < stock) {
+      setCount(count + 1);
     }
+  };
+  const handleAddToCart = () => {
+    addProd(count);
+  };
 
   return (
-    <div>
-        <button onClick={substraction}> - </button>
-        <p>{count}</p>
-        <button onClick={addition}> + </button>
-    </div>
-  )
-}
+    <Counter
+      handleAddToCart={handleAddToCart}
+      handleClickDecrement={handleClickDecrement}
+      handleClickIncrement={handleClickIncrement}
+      count={count}
+    />
+  );
+};
 
-export default ItemCount
+export default ItemCount;

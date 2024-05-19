@@ -1,4 +1,11 @@
+import ItemCount from "../ItemCount/ItemCount";
+
 const ItemDetail = ({ product }) => {
+  const addProd = (count) => {
+    const prodCart = { product, quantity: count };
+    console.log(prodCart);
+  };
+
   return (
     <div className="i-d-c">
       <img
@@ -14,6 +21,7 @@ const ItemDetail = ({ product }) => {
             ? "No hay descripcion para este producto"
             : product.description}
         </p>
+        <ItemCount stock={product.stock} addProd={addProd} />
       </div>
     </div>
   );
