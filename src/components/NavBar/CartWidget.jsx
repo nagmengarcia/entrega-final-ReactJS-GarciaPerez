@@ -8,9 +8,9 @@ const CartWidget = () => {
   const { totalCartItemAmount } = useContext(CartContext);
 
   return (
-    <Link to="/cart" className="nav-bar__cart-widget">
+    <Link to="/cart" className="cart-widget">
       <IoBagRemoveOutline size={24} color="white" />
-      <p className="counter">{totalCartItemAmount()}</p>
+      <p className="cart-widget__counter">{totalCartItemAmount()}</p>
     </Link>
   );
 };

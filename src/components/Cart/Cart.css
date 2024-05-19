@@ -16,6 +16,8 @@
     border-radius: 8px;
     overflow: hidden;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 1rem 0 0;
 }
 
 .cart-product-item__image{
@@ -25,7 +27,27 @@
 .cart-product-item__name-and-quantity{
     display: flex;
     gap: .4rem;
+    text-align: left;
 }
 .cart-product-item__product-quantity{
     opacity: .4;
+}
+
+.delete-cart-button{
+    background-color: #4C7EFF;
+    color: #FCFcFc;
+    border: none;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    width: fit-content;
+}
+.delete-item-button{
+    background-color: rgba(255,255,255,.1);
+    display: flex;
+    border: none;
+    padding: 1rem 1.4rem;
+    border-radius: 8px;
+    justify-self: flex-end;
 }

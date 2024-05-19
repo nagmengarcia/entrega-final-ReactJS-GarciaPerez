@@ -18,7 +18,10 @@ const ItemDetail = ({ product }) => {
         alt={product.description}
       />
       <div className="item-detail-container__product-detail">
-        <p className="item-detail-container__product-name">{product.name}</p>
+        <h1 className="item-detail-container__product-name">{product.name}</h1>
+        <h2 className="item-detail-container__product-category">
+          {product.category}
+        </h2>
         <p className="item-detail-container__product-price">
           AR$ {product.price}
         </p>

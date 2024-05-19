@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { IoTrashOutline } from "react-icons/io5";
 import "./Cart.css";
 
 const Cart = () => {
@@ -17,7 +18,6 @@ const Cart = () => {
             <p className="cart-product-item__product-name">{product.name}</p>
             {product.quantity > 1 ? (
               <p className="cart-product-item__product-quantity">
-                {" "}
                 x{product.quantity}
               </p>
             ) : (
@@ -25,9 +25,14 @@ const Cart = () => {
             )}
           </div>
           <p>AR$ {product.price * product.quantity}</p>
+          <button className="delete-item-button">
+            <IoTrashOutline size={24} color="white" />
+          </button>
         </div>
       ))}
-      <button onClick={deleteCart}> Eliminar carrito</button>
+      <button className="delete-cart-button" onClick={deleteCart}>
+        Eliminar carrito
+      </button>
     </div>
   );
 };

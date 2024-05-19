@@ -1,20 +1,21 @@
-.counter {
+.cart-widget__counter{
     font-family: sans-serif;
-    font-size: .7rem;
+    font-size: .8rem;
     font-weight: 700;
-    background-color: grey;
+    margin: 20pxp;
     color: white;
     padding: 4px 8px;
     border-radius: 100px;
     position: relative;
     left:-12px;
     top: -12px;
+    align-self: flex-start;
+    width: 8px;
 }
 
-.nav-bar__cart-widget{
+.cart-widget{
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: .5rem;
 };
-

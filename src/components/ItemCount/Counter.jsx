@@ -1,3 +1,6 @@
+import { IoAddOutline } from "react-icons/io5";
+import { IoRemoveOutline } from "react-icons/io5";
+
 const Counter = ({
   handleAddToCart,
   handleClickDecrement,
@@ -11,14 +14,14 @@ const Counter = ({
           className="item-count__control-button"
           onClick={handleClickDecrement}
         >
-          --
+          <IoRemoveOutline size={24} color="white" />
         </button>
         <p>{count}</p>
         <button
           className="item-count__control-button"
           onClick={handleClickIncrement}
         >
-          +
+          <IoAddOutline size={24} color="white" />
         </button>
       </div>
       <button className="item-count__submit-button" onClick={handleAddToCart}>
