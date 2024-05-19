@@ -6,7 +6,7 @@ const getProducts = () => {
     setTimeout(() => {
       resolve(json);
       reject("Error consumiendo la Api");
-    }, 3500);
+    }, 1000);
   });
 };
 
