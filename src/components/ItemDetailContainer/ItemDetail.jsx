@@ -1,9 +1,13 @@
 import ItemCount from "../ItemCount/ItemCount";
+import { useContext } from "react";
+import { CartContext } from "../../Context/CartContext";
 
 const ItemDetail = ({ product }) => {
+  const { addProdToCart } = useContext(CartContext);
+
   const addProd = (count) => {
     const prodCart = { product, quantity: count };
-    console.log(prodCart);
+    addProdToCart(prodCart);
   };
 
   return (
