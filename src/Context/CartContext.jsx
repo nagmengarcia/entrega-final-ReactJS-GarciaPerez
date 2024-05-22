@@ -5,8 +5,29 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
+  const isInCart = (productId) => {
+    const checker = cart.some((cartProduct) => cartProduct.id === productId);
+    return checker;
+  };
+
   const addProdToCart = (newProduct) => {
-    setCart([...cart, newProduct]);
+    const checker = isInCart(newProduct);
+
+    if (checker) {
+      const filteredCart = cart.map((cartProduct) => {
+        if (cartProduct.id === newProduct.id) {
+          return {
+            ...cartProduct,
+            quantity: cartProduct.quantity + newProduct.quantity,
+          };
+        } else {
+          return cartProduct;
+        }
+      });
+      setCart(filteredCart);
+    } else {
+      setCart([...cart, newProduct]);
+    }
   };
 
   const totalCartItemAmount = () => {
@@ -21,7 +42,6 @@ const CartProvider = ({ children }) => {
     setCart([]);
   };
 
-  // funcion para detectar productos duplicados al agregar al carrito
   // funcion para eliminar un producto especifico
 
   return (
