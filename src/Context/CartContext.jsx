@@ -5,16 +5,10 @@ const CartContext = createContext();
 const CartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
 
-  const isInCart = (productId) => {
-    const checker = cart.some((cartProduct) => cartProduct.id === productId);
-    return checker;
-  };
-
   const addProdToCart = (newProduct) => {
-    const checker = isInCart(newProduct);
-
-    if (checker) {
-      const filteredCart = cart.map((cartProduct) => {
+    const condition = isInCart(newProduct.id);
+    if (condition) {
+      const modifiedProducts = cart.map((cartProduct) => {
         if (cartProduct.id === newProduct.id) {
           return {
             ...cartProduct,
@@ -24,7 +18,7 @@ const CartProvider = ({ children }) => {
           return cartProduct;
         }
       });
-      setCart(filteredCart);
+      setCart(modifiedProducts);
     } else {
       setCart([...cart, newProduct]);
     }
@@ -43,6 +37,10 @@ const CartProvider = ({ children }) => {
   };
 
   // funcion para eliminar un producto especifico
+  const isInCart = (productId) => {
+    const checker = cart.some((cartProduct) => cartProduct.id === productId);
+    return checker;
+  };
 
   return (
     // creamos nuestro componente con el metodo de contexto llamado .Provider , queremos que se comporte como proveedor de contexto de funciones por ejemplo
