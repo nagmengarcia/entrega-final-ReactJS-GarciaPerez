@@ -1,14 +1,17 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
 import { IoTrashOutline } from "react-icons/io5";
+import { IoAddOutline } from "react-icons/io5";
+import { IoRemoveOutline } from "react-icons/io5";
+
 import "./Cart.css";
 
 const Cart = () => {
-  const { cart, deleteCart } = useContext(CartContext);
+  const { cart, deleteCart, deleteItemById } = useContext(CartContext);
   return (
     <div className="cart-products-container">
       {cart.map((product) => (
-        <div className="cart-product-item">
+        <div key={product.id} className="cart-product-item">
           <img
             src={product.image}
             alt={product.name}
@@ -25,7 +28,10 @@ const Cart = () => {
             )}
           </div>
           <p>AR$ {product.price * product.quantity}</p>
-          <button className="delete-item-button">
+          <button
+            className="delete-item-button"
+            onClick={() => deleteItemById(product.id)}
+          >
             <IoTrashOutline size={24} color="white" />
           </button>
         </div>

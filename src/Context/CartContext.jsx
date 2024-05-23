@@ -10,6 +10,7 @@ const CartProvider = ({ children }) => {
     if (condition) {
       const modifiedProducts = cart.map((cartProduct) => {
         if (cartProduct.id === newProduct.id) {
+          // podria agregar un limite en quantity para que no supere el stock, mandar por ahi una notif con toastify
           return {
             ...cartProduct,
             quantity: cartProduct.quantity + newProduct.quantity,
@@ -37,6 +38,11 @@ const CartProvider = ({ children }) => {
   };
 
   // funcion para eliminar un producto especifico
+  const deleteItemById = (productId) => {
+    const filteredProduct = cart.filter((product) => product.id !== productId);
+    setCart(filteredProduct);
+  };
+
   const isInCart = (productId) => {
     const checker = cart.some((cartProduct) => cartProduct.id === productId);
     return checker;
@@ -45,7 +51,13 @@ const CartProvider = ({ children }) => {
   return (
     // creamos nuestro componente con el metodo de contexto llamado .Provider , queremos que se comporte como proveedor de contexto de funciones por ejemplo
     <CartContext.Provider
-      value={{ cart, addProdToCart, totalCartItemAmount, deleteCart }}
+      value={{
+        cart,
+        addProdToCart,
+        totalCartItemAmount,
+        deleteCart,
+        deleteItemById,
+      }}
     >
       {children}
     </CartContext.Provider>
