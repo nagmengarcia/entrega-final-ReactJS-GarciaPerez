@@ -3,12 +3,23 @@ import { CartContext } from "../../context/CartContext";
 import { IoTrashOutline } from "react-icons/io5";
 import { IoAddOutline } from "react-icons/io5";
 import { IoRemoveOutline } from "react-icons/io5";
+import { Link } from "react-router-dom";
 
 import "./Cart.css";
 
 const Cart = () => {
   const { cart, deleteCart, deleteCartItemById, totalPrice } =
     useContext(CartContext);
+
+  // early return 👇
+  if (cart.length === 0) {
+    return (
+      <div>
+        <h1> El carrito está vacío</h1>;<Link to="/">Ir a la home</Link>
+      </div>
+    );
+  }
+
   return (
     <div className="cart-products-container">
       {cart.map((product) => (
