@@ -1,9 +1,11 @@
 import ItemCount from "../ItemCount/ItemCount";
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
+import { Link } from "react-router-dom";
 
 const ItemDetail = ({ product }) => {
-  const { addProdToCart } = useContext(CartContext);
+  const { addProdToCart, isInCart, cart } = useContext(CartContext);
+  const { show, showItemCount, showLinkToCart } = useComponentSwap();
 
   const addProduct = (count) => {
     const productCart = { ...product, quantity: count };
@@ -30,7 +32,20 @@ const ItemDetail = ({ product }) => {
             ? "No hay descripcion para este producto"
             : product.description}
         </p>
-        <ItemCount stock={product.stock} addProduct={addProduct} />
+
+        {/* {
+        if( isInCart(product.id) === true ){
+          return (
+            <ItemCount stock={product.stock} addProduct={addProduct} />
+          )
+       }else {
+        return (
+        <button>
+          <Link to="/cart">Ir al carrito</Link>
+        </button>
+        )
+       }
+      } */}
       </div>
     </div>
   );
