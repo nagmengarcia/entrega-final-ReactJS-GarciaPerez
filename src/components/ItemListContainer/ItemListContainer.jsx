@@ -5,7 +5,7 @@ import "./ItemListContainer.css";
 import { useParams } from "react-router-dom";
 import useLoader from "../../hooks/useLoader";
 
-const ItemListContainer = ({ saludo }) => {
+const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
   const { idCategory } = useParams();
   const { cargando, mostrarLoader, ocultarLoader, pantallaCarga } = useLoader();
@@ -31,9 +31,17 @@ const ItemListContainer = ({ saludo }) => {
       });
   }, [idCategory]);
 
+  const capitalizeFirstLetter = (value) => {
+    return value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+  };
+
   return (
     <div className="item-list-container">
-      <h2 className="saludo">{saludo}</h2>
+      <h1 className="saludo">
+        {idCategory
+          ? `Productos> ${capitalizeFirstLetter(idCategory)}`
+          : "Bienvenidos a Cultura Visitante."}
+      </h1>
       {cargando ? pantallaCarga : <ItemList products={products} />}
     </div>
   );

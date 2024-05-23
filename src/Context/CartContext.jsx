@@ -9,11 +9,22 @@ const CartProvider = ({ children }) => {
     const condition = isInCart(newProduct.id);
     if (condition) {
       const modifiedProducts = cart.map((cartProduct) => {
-        if (cartProduct.id === newProduct.id) {
-          // podria agregar un limite en quantity para que no supere el stock, mandar por ahi una notif con toastify
+        if (
+          cartProduct.id === newProduct.id &&
+          newProduct.stock >= cartProduct.quantity + newProduct.quantity
+        ) {
           return {
             ...cartProduct,
             quantity: cartProduct.quantity + newProduct.quantity,
+          };
+        } else if (
+          cartProduct.id === newProduct.id &&
+          newProduct.stock < cartProduct.quantity + newProduct.quantity
+        ) {
+          alert("Llegaste al máximo de stock para este producto");
+          return {
+            ...cartProduct,
+            quantity: newProduct.stock,
           };
         } else {
           return cartProduct;
@@ -38,7 +49,7 @@ const CartProvider = ({ children }) => {
   };
 
   // funcion para eliminar un producto especifico
-  const deleteItemById = (productId) => {
+  const deleteCartItemById = (productId) => {
     const filteredProduct = cart.filter((product) => product.id !== productId);
     setCart(filteredProduct);
   };
@@ -46,6 +57,14 @@ const CartProvider = ({ children }) => {
   const isInCart = (productId) => {
     const checker = cart.some((cartProduct) => cartProduct.id === productId);
     return checker;
+  };
+
+  const totalPrice = () => {
+    const finalPrice = cart.reduce(
+      (acc, product) => acc + product.price * product.quantity,
+      0
+    );
+    return finalPrice;
   };
 
   return (
@@ -56,7 +75,8 @@ const CartProvider = ({ children }) => {
         addProdToCart,
         totalCartItemAmount,
         deleteCart,
-        deleteItemById,
+        deleteCartItemById,
+        totalPrice,
       }}
     >
       {children}

@@ -7,7 +7,8 @@ import { IoRemoveOutline } from "react-icons/io5";
 import "./Cart.css";
 
 const Cart = () => {
-  const { cart, deleteCart, deleteItemById } = useContext(CartContext);
+  const { cart, deleteCart, deleteCartItemById, totalPrice } =
+    useContext(CartContext);
   return (
     <div className="cart-products-container">
       {cart.map((product) => (
@@ -30,12 +31,13 @@ const Cart = () => {
           <p>AR$ {product.price * product.quantity}</p>
           <button
             className="delete-item-button"
-            onClick={() => deleteItemById(product.id)}
+            onClick={() => deleteCartItemById(product.id)}
           >
             <IoTrashOutline size={24} color="white" />
           </button>
         </div>
       ))}
+      <p>Precio total: ${totalPrice().toLocaleString("es-ES")}</p>
       <button className="delete-cart-button" onClick={deleteCart}>
         Eliminar carrito
       </button>
