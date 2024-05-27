@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const ItemDetail = ({ product }) => {
   const { addProdToCart, isInCart, cart } = useContext(CartContext);
-  const { show, showItemCount, showLinkToCart } = useComponentSwap();
 
   const addProduct = (count) => {
     const productCart = { ...product, quantity: count };
