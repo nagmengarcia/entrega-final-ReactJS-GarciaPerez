@@ -31,7 +31,7 @@ const ItemDetail = ({ product }) => {
             ? "No hay descripcion para este producto"
             : product.description}
         </p>
-
+        <ItemCount stock={product.stock} addProduct={addProduct} />
         {/* {
         if( isInCart(product.id) === true ){
           return (
