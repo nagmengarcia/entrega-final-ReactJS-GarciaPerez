@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import Form from "./Form";
 import { CartContext } from "../../context/CartContext";
-import { addDoc, collection } from "firebase/firestore";
+import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
 import db from "../../db/db.js";
 
 const Checkout = () => {
@@ -11,7 +11,9 @@ const Checkout = () => {
     mail: "",
   });
 
-  const { cart, totalPrice } = useContext(CartContext);
+  const [orderId, setOrderId] = useState(null);
+
+  const { cart, totalPrice, deleteCart } = useContext(CartContext);
 
   const handleChangeInput = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -25,28 +27,60 @@ const Checkout = () => {
       customer: { ...formData },
       products: { ...cart },
       total: totalPrice(),
+      date: Timestamp.fromDate(new Date()),
     };
     // vemos una vez submiteado el pedido los datos de la orden
     //console.log(order);
 
     //ejecutamos la subida a firebase
     generateOrderInFirebase(order);
+  };
+  // subimos nuestra orden a firebase
+  const generateOrderInFirebase = (order) => {
+    // creo una coleccion dentro de la Firestore Database
+    const ordersRef = collection(db, "orders");
+    addDoc(ordersRef, order)
+      .then((res) => setOrderId(res.id))
+      .catch((error) => console.error(error))
+      .finally(() => {
+        //reducir el stock, importantisimo el orden antes de borrar el carrito
+        updateStock();
+        //luego de que se subio la orden vaciamos el carrito
+        deleteCart();
+      });
+  };
 
-    // subimos nuestra orden a firebase
-    const generateOrderInFirebase = (order) => {
-      // creo una coleccion dentro de la Firestore Database
-      const ordersRef = collection(db, "orders");
-      addDoc(ordersRef, order).then((res) => console.log(res));
-    };
+  const updateStock = () => {
+    cart.map((cartProduct) => {
+      // declaramos y guardamos la cantidad para luego restarla en el stock
+      let quantity = cartProduct.quantity;
+      //borramos el campo quantity ya que nuestros objetos en la db no poseen esta key
+      delete cartProduct.quantity;
+
+      const productRef = doc(db, "products", cartProduct.id);
+      setDoc(productRef, {
+        ...cartProduct,
+        stock: cartProduct.stock - quantity,
+      })
+        .then(() => console.log("Stock actulizado correctamente"))
+        .catch((error) => console.error(error));
+    });
   };
 
   return (
     <div>
-      <Form
-        formData={formData}
-        handleChangeInput={handleChangeInput}
-        handleSubmitForm={handleSubmitForm}
-      />
+      {orderId ? (
+        <div>
+          <h2> Orden generada con exito!</h2>
+          <p> Guarda el id de tu orden: {orderId}</p>
+        </div>
+      ) : (
+        <Form
+          formData={formData}
+          handleChangeInput={handleChangeInput}
+          handleSubmitForm={handleSubmitForm}
+        />
+      )}
     </div>
   );
 };
