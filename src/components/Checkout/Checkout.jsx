@@ -1,6 +1,8 @@
 import { useContext, useState } from "react";
 import Form from "./Form";
 import { CartContext } from "../../context/CartContext";
+import { addDoc, collection } from "firebase/firestore";
+import db from "../../db/db.js";
 
 const Checkout = () => {
   const [formData, setFormData] = useState({
@@ -24,7 +26,18 @@ const Checkout = () => {
       products: { ...cart },
       total: totalPrice(),
     };
-    console.log(order);
+    // vemos una vez submiteado el pedido los datos de la orden
+    //console.log(order);
+
+    //ejecutamos la subida a firebase
+    generateOrderInFirebase(order);
+
+    // subimos nuestra orden a firebase
+    const generateOrderInFirebase = (order) => {
+      // creo una coleccion dentro de la Firestore Database
+      const ordersRef = collection(db, "orders");
+      addDoc(ordersRef, order).then((res) => console.log(res));
+    };
   };
 
   return (
