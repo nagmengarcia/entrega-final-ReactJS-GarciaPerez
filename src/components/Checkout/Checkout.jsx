@@ -3,6 +3,7 @@ import Form from "./Form";
 import { CartContext } from "../../context/CartContext";
 import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
 import db from "../../db/db.js";
+import validateForm from "../../utils/yupValidation.js";
 
 const Checkout = () => {
   const [formData, setFormData] = useState({
@@ -19,7 +20,7 @@ const Checkout = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  const handleSubmitForm = (event) => {
+  const handleSubmitForm = async (event) => {
     event.preventDefault();
     // le damos formato a los datos que vamos a subir a firebase
     // los datos del comprador :
@@ -29,11 +30,18 @@ const Checkout = () => {
       total: totalPrice(),
       date: Timestamp.fromDate(new Date()),
     };
-    // vemos una vez submiteado el pedido los datos de la orden
-    //console.log(order);
-
-    //ejecutamos la subida a firebase
-    generateOrderInFirebase(order);
+    try {
+      //validamos el form
+      const formResponse = await validateForm(formData);
+      if (formResponse.status === "success") {
+        //ejecutamos la subida a firebase
+        generateOrderInFirebase(order);
+      } else {
+        console.error(formResponse.message);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
   // subimos nuestra orden a firebase
   const generateOrderInFirebase = (order) => {
