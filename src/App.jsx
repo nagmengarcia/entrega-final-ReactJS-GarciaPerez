@@ -6,12 +6,15 @@ import "./App.css";
 import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer";
 import { CartProvider } from "./context/CartContext";
 import Checkout from "./components/Checkout/Checkout";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <BrowserRouter>
       <CartProvider>
         <NavBar />
+        <ToastContainer theme="dark" />
 
         <Routes>
           <Route path="/" element={<ItemListContainer />} />

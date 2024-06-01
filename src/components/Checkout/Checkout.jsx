@@ -4,6 +4,7 @@ import { CartContext } from "../../context/CartContext";
 import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
 import db from "../../db/db.js";
 import validateForm from "../../utils/yupValidation.js";
+import { toast } from "react-toastify";
 
 const Checkout = () => {
   const [formData, setFormData] = useState({
@@ -37,10 +38,10 @@ const Checkout = () => {
         //ejecutamos la subida a firebase
         generateOrderInFirebase(order);
       } else {
-        console.error(formResponse.message);
+        toast.warning(formResponse.message);
       }
     } catch (error) {
-      console.log(error);
+      toast.error(error.message);
     }
   };
   // subimos nuestra orden a firebase
