@@ -12,13 +12,16 @@ const ItemDetailContainer = () => {
 
   const getProduct = () => {
     const productRef = doc(db, "products", idProduct);
-    getDoc(productRef).then((productFromDataBase) => {
-      const data = {
-        id: productFromDataBase.id,
-        ...productFromDataBase.data(),
-      };
-      setProduct(data);
-    });
+    getDoc(productRef)
+      .then((productFromDataBase) => {
+        const data = {
+          id: productFromDataBase.id,
+          ...productFromDataBase.data(),
+        };
+        setProduct(data);
+      })
+      .catch((error) => console.error(error))
+      .finally(console.log("fin"));
   };
 
   useEffect(() => {
