@@ -31,20 +31,16 @@ const ItemDetail = ({ product }) => {
             ? "No hay descripcion para este producto"
             : product.description}
         </p>
-        <ItemCount stock={product.stock} addProduct={addProduct} />
-        {/* {
-        if( isInCart(product.id) === true ){
-          return (
+        {/* <ItemCount stock={product.stock} addProduct={addProduct} /> */}
+        <div>
+          {isInCart(product.id) === true ? (
+            <button className="go-to-cart">
+              <Link to="/cart"> Ir al carrito </Link>
+            </button>
+          ) : (
             <ItemCount stock={product.stock} addProduct={addProduct} />
-          )
-       }else {
-        return (
-        <button>
-          <Link to="/cart">Ir al carrito</Link>
-        </button>
-        )
-       }
-      } */}
+          )}
+        </div>
       </div>
     </div>
   );

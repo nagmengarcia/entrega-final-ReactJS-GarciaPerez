@@ -77,6 +77,7 @@ const CartProvider = ({ children }) => {
         deleteCart,
         deleteCartItemById,
         totalPrice,
+        isInCart,
       }}
     >
       {children}
