@@ -8,6 +8,11 @@ let userSchema = object({
   mail: string()
     .email("Este campo debe de ser de tipo email")
     .required("Email es un campo requerido"),
+  mailConfirmation: string()
+    .email(
+      "Este campo debe de ser de tipo email y coincidir con el primer email ingresado"
+    )
+    .required(),
 });
 
 const validateForm = async (formData) => {

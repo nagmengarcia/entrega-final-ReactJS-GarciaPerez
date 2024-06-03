@@ -1,28 +1,51 @@
-const Form = ({ formData, handleChangeInput, handleSubmitForm }) => {
+const Form = ({
+  formData,
+  handleChangeInput,
+  handleSubmitForm,
+  mailCoincidenceChecker,
+  showFormButton,
+}) => {
   return (
     <form onSubmit={handleSubmitForm}>
-      <label>Nombre: </label>
+      <label htmlFor="name">Nombre: </label>
       <input
+        placeholder="John Doe"
         type="text"
         name="nombre"
         value={formData.nombre}
         onChange={handleChangeInput}
       />
-      <label>Telefono: </label>
+      <label htmlFor="telefono">Telefono: </label>
       <input
+        placeholder="0123 456789"
         type="text"
         name="telefono"
         value={formData.telefono}
         onChange={handleChangeInput}
       />
-      <label>Mail: </label>
+      <label htmlFor="mail">Mail: </label>
       <input
+        placeholder="mail@ejemplo.com"
         type="text"
         name="mail"
         value={formData.mail}
         onChange={handleChangeInput}
       />
-      <button type="submit">Enviar orden</button>
+      <label htmlFor="mailConfirmation">Confirmar mail: </label>
+      <input
+        placeholder="mail@ejemplo.com"
+        type="text"
+        name="mailConfirmation"
+        value={formData.mailConfirmation}
+        onChange={handleChangeInput}
+      />
+      {showFormButton() ? (
+        <button className="submit-form" type="submit">
+          Confirmar pedido
+        </button>
+      ) : (
+        <div className="submit-form-inactive">Confirmar pedido</div>
+      )}
     </form>
   );
 };

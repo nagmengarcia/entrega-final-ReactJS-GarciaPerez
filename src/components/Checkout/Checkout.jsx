@@ -5,12 +5,14 @@ import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
 import db from "../../db/db.js";
 import validateForm from "../../utils/yupValidation.js";
 import { toast } from "react-toastify";
+import "./Checkout.css";
 
 const Checkout = () => {
   const [formData, setFormData] = useState({
     nombre: "",
     telefono: "",
     mail: "",
+    mailConfirmation: "",
   });
 
   const [orderId, setOrderId] = useState(null);
@@ -20,6 +22,31 @@ const Checkout = () => {
   const handleChangeInput = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
+
+  const mailCoincidenceChecker = () => {
+    let mail1 = formData.mail;
+    let mail2 = formData.mailConfirmation;
+
+    if (mail1 === mail2 && mail1 !== "") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  mailCoincidenceChecker();
+
+  const showFormButton = () => {
+    const a = formData.nombre;
+    const b = formData.telefono;
+    const c = mailCoincidenceChecker();
+    if (c && a !== "" && b !== "") {
+      return true;
+    } else {
+      return false;
+    }
+  };
+  showFormButton();
 
   const handleSubmitForm = async (event) => {
     event.preventDefault();
@@ -88,6 +115,8 @@ const Checkout = () => {
           formData={formData}
           handleChangeInput={handleChangeInput}
           handleSubmitForm={handleSubmitForm}
+          mailCoincidenceChecker={mailCoincidenceChecker}
+          showFormButton={showFormButton}
         />
       )}
     </div>
