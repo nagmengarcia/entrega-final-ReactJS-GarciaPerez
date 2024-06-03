@@ -88,6 +88,7 @@
 
 }
 .item-count__submit-button{
+    font-family: "Anybody", sans-serif;
     background-color: #4C7EFF;
     color: #FCFcFc;
     border: none;
@@ -95,6 +96,16 @@
     font-weight: 600;
     font-size: 1rem;
     border-radius: 8px;
-    
+}
 
+.go-to-cart{
+    font-family: "Anybody", sans-serif;
+    background-color: #4C7EFF;
+    color: #fdfdfd;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
 }

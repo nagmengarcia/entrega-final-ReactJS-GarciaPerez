@@ -65,9 +65,18 @@ const ItemListContainer = () => {
   return (
     <div className="item-list-container">
       <h1 className="saludo">
-        {idCategory
-          ? `Productos> ${capitalizeFirstLetter(idCategory)}`
-          : "Bienvenidos a Cultura Visitante."}
+        {idCategory ? (
+          <span className="saludo-small">
+            Productos{">"}{" "}
+            <span className="saludo-highlight">
+              {capitalizeFirstLetter(idCategory)}
+            </span>
+          </span>
+        ) : (
+          <span className="saludo-principal">
+            Bienvenidos a Cultura Visitante.
+          </span>
+        )}
       </h1>
       {cargando ? pantallaCarga : <ItemList products={products} />}
     </div>
