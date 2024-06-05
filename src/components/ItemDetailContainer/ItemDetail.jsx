@@ -33,9 +33,11 @@ const ItemDetail = ({ product }) => {
         </p>
         <div>
           {isInCart(product.id) === true ? (
-            <Link to="/cart" className="go-to-cart">
-              Ir al carrito
-            </Link>
+            <div className="go-to-cart-button-container">
+              <Link to="/cart" className="go-to-cart-button">
+                IR AL CARRITO
+              </Link>
+            </div>
           ) : (
             <ItemCount stock={product.stock} addProduct={addProduct} />
           )}

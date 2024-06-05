@@ -14,18 +14,18 @@ const Counter = ({
           className="item-count__control-button"
           onClick={handleClickDecrement}
         >
-          <IoRemoveOutline size={24} color="white" />
+          <IoRemoveOutline size={24} color="#564E56" />
         </button>
         <p>{count}</p>
         <button
           className="item-count__control-button"
           onClick={handleClickIncrement}
         >
-          <IoAddOutline size={24} color="white" />
+          <IoAddOutline size={24} color="#564E56" />
         </button>
       </div>
       <button className="item-count__submit-button" onClick={handleAddToCart}>
-        Agregar al carrito
+        AGREGAR AL CARRITO
       </button>
     </div>
   );
