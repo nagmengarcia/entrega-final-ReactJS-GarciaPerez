@@ -11,7 +11,7 @@ const CartWidget = () => {
 
   return (
     <Link to="/cart" className="cart-widget">
-      <IoBagRemoveOutline size={24} color="white" />
+      <IoBagRemoveOutline size={24} color="#564E56" />
       <p
         className={
           quantity >= 1

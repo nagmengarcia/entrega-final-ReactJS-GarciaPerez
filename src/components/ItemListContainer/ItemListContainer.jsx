@@ -5,6 +5,7 @@ import ItemList from "./ItemList";
 import "./ItemListContainer.css";
 import { useParams } from "react-router-dom";
 import useLoader from "../../hooks/useLoader";
+import heroImage from "../../assets/hero-image.jpg";
 
 const ItemListContainer = () => {
   const [products, setProducts] = useState([]);
@@ -64,20 +65,21 @@ const ItemListContainer = () => {
 
   return (
     <div className="item-list-container">
-      <h1 className="saludo">
+      <div className="first-titles-container">
         {idCategory ? (
           <span className="saludo-small">
-            Productos{">"}{" "}
+            Productos{">"}
             <span className="saludo-highlight">
               {capitalizeFirstLetter(idCategory)}
             </span>
           </span>
         ) : (
-          <span className="saludo-principal">
-            Bienvenidos a Cultura Visitante.
-          </span>
+          <div className="landing-container">
+            <img className="hero-image" src={heroImage} />
+            <h1 className="welcome-message">Bienvenidos 🥊</h1>
+          </div>
         )}
-      </h1>
+      </div>
       {cargando ? pantallaCarga : <ItemList products={products} />}
     </div>
   );

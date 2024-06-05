@@ -1,6 +1,7 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import Form from "./Form";
 import { CartContext } from "../../context/CartContext";
+import { IoCopyOutline } from "react-icons/io5";
 import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
 import db from "../../db/db.js";
 import validateForm from "../../utils/yupValidation.js";
@@ -8,19 +9,33 @@ import { toast } from "react-toastify";
 import "./Checkout.css";
 
 const Checkout = () => {
+  // hooks zone
   const [formData, setFormData] = useState({
     nombre: "",
     telefono: "",
     mail: "",
     mailConfirmation: "",
   });
-
   const [orderId, setOrderId] = useState(null);
-
   const { cart, totalPrice, deleteCart } = useContext(CartContext);
+  const copyRef = useRef(null);
 
+  //handle zone
   const handleChangeInput = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleCopyOrderId = () => {
+    if (copyRef.current) {
+      const text = copyRef.current.innerText;
+
+      navigator.clipboard
+        .writeText(text)
+        .then(() => {
+          toast.success("Tu orden se copio al portapapeles");
+        })
+        .catch(() => toast.error("Error al copiar al portapapeles"));
+    }
   };
 
   const mailCoincidenceChecker = () => {
@@ -106,9 +121,18 @@ const Checkout = () => {
   return (
     <div>
       {orderId ? (
-        <div>
-          <h2> Orden generada con exito!</h2>
-          <p> Guarda el id de tu orden: {orderId}</p>
+        <div className="generated-order">
+          <h2 className="generated-order__title"> Orden generada con exito!</h2>
+          <p className="generated-order__key">
+            Guarda el siguiente token de seguimiento
+          </p>
+          <div className="order">
+            <p ref={copyRef}>{orderId}</p>
+
+            <button className="copy-to-clipboard" onClick={handleCopyOrderId}>
+              <IoCopyOutline color="white" size={24} />
+            </button>
+          </div>
         </div>
       ) : (
         <Form
