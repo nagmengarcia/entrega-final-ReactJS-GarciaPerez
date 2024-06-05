@@ -67,16 +67,16 @@ const ItemListContainer = () => {
     <div className="item-list-container">
       <div className="first-titles-container">
         {idCategory ? (
-          <span className="saludo-small">
-            Productos{">"}
+          <div className="categories-container">
+            Productos{" > "}
             <span className="saludo-highlight">
               {capitalizeFirstLetter(idCategory)}
             </span>
-          </span>
+          </div>
         ) : (
           <div className="landing-container">
             <img className="hero-image" src={heroImage} />
-            <h1 className="welcome-message">Bienvenidos 🥊</h1>
+            <h1 className="welcome-message">Bienvenidos/as 🥊💥</h1>
           </div>
         )}
       </div>

@@ -4,7 +4,7 @@
     padding: 2rem 0;
     display: flex;
     flex-wrap: wrap;
-    justify-items: center;
+    justify-items: center; 
     justify-content: flex-start;
     gap: 1rem;
     font-family: "Work Sans", sans-serif;
@@ -54,7 +54,7 @@
 .item-list-container{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
     max-width: 100vw;
     overflow: hidden;
 }
@@ -88,20 +88,24 @@
     font-family: "Work Sans", sans-serif;
     font-size: 2.5rem;
     color: #564E56;
+
     font-weight: 600;
-    margin: 2rem 0 0 4rem;
-    
+    margin: 2rem auto 0 auto;   
 }
 
 
-.saludo-small{
-margin-top:-2rem;
-font-size: 1.25rem;
-font-weight: 400;
-letter-spacing: .08rem;
-color: #fdfdfd82;
+.categories-container{
+    font-family: "Work Sans", sans-serif;
+    margin-top:8rem;
+    font-size: 1.25rem;
+    font-weight: 500;
+    letter-spacing: -.02rem;
+    color: #564e5652;
+    padding-left: 4rem;
 }
 
 .saludo-highlight{
-    color: #fdfdfd;
+    color: #564E56;
+    margin-left: .25rem;
+    text-decoration: underline;
 }

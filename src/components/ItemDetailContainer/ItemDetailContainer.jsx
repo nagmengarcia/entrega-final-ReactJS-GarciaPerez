@@ -10,18 +10,40 @@ const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
   const { idProduct } = useParams();
 
-  const getProduct = () => {
-    const productRef = doc(db, "products", idProduct);
-    getDoc(productRef)
-      .then((productFromDataBase) => {
+  // const getProduct = () => {
+  //   const productRef = doc(db, "products", idProduct);
+  //   getDoc(productRef)
+  //     .then((productFromDataBase) => {
+  //       const data = {
+  //         id: productFromDataBase.id,
+  //         ...productFromDataBase.data(),
+  //       };
+  //       setProduct(data);
+  //     })
+  //     .catch((error) => {
+  //       alert(error);
+  //     })
+  //     .finally();
+  // };
+  const getProduct = async () => {
+    try {
+      const productRef = doc(db, "products", idProduct);
+      const productFromDataBase = await getDoc(productRef);
+      if (productFromDataBase.exists()) {
         const data = {
           id: productFromDataBase.id,
           ...productFromDataBase.data(),
         };
         setProduct(data);
-      })
-      .catch((error) => console.error(error))
-      .finally(console.log("fin"));
+      } else {
+        alert("No such document!");
+      }
+    } catch (error) {
+      alert("Error fetching product: " + error.message);
+    } finally {
+      // Aquí puedes hacer algo independientemente del resultado
+      console.log("Fetch attempt finished");
+    }
   };
 
   useEffect(() => {
