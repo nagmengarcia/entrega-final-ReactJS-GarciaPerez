@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 import "./ItemDetailContainer.css";
 import { doc, getDoc } from "firebase/firestore";
 import db from "../../db/db";
+import { BsDatabaseX } from "react-icons/bs";
+import { LuSearchX } from "react-icons/lu";
 
 import { SyncLoader } from "react-spinners";
 
@@ -29,10 +31,8 @@ const ItemDetailContainer = () => {
         setProductExistence("dont exist");
       }
     } catch (error) {
-      console.log("Error fetching product: " + error.message);
+      setProductExistence("error");
     } finally {
-      // Aquí puedes hacer algo independientemente del resultado
-      console.log();
     }
   };
 
@@ -48,8 +48,9 @@ const ItemDetailContainer = () => {
         <div className="spinner-container">
           <SyncLoader color="#2462E9" className="spinner" />
         </div>
-      ) : (
+      ) : productExistence === "dont exist" ? (
         <div className="product-not-found">
+          <LuSearchX size={64} color="#564E56" />
           <p className="product-not-found-message">
             Lo siento, el producto que buscas no existe
           </p>
@@ -57,7 +58,18 @@ const ItemDetailContainer = () => {
             Volver a la home
           </Link>
         </div>
-      )}
+      ) : productExistence === "error" ? (
+        <div className="product-not-found">
+          <BsDatabaseX size={64} color="#564E56" />
+          <p className="product-not-found-message">
+            Error comunicandose con la base de datos, intentalo nuevamente mas
+            tarde.
+          </p>
+          <Link to="/" className="back-home">
+            Volver a la home
+          </Link>
+        </div>
+      ) : null}
     </div>
   );
 };
