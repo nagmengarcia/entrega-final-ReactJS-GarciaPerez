@@ -1,3 +1,6 @@
+.item-detail{
+    padding: 1rem 0;
+}
 .item-detail-container{
     margin: 0;
     width: 100%;
@@ -116,4 +119,41 @@
     border: none;
     width: 100%;
     text-align: center;
+}
+
+
+.product-not-found{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 20rem;
+    justify-content: center;
+    align-items: center;
+
+}
+.product-not-found-message {
+    color: #564E56;
+    padding: auto;-top: 8rem;
+    font-family: "Work Sans";
+}
+
+.back-home{
+    
+    font-family: "Work Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fdfdfd;
+    background-color: #4C7EFF;
+    border-radius: 8rem;
+    padding: 1rem 2rem;
+    border: none;
+    width: fit-content;
+    text-align: center;
+}
+
+.spinner-container{
+    display: flex;
+    justify-content: center;
+    padding-top: 8rem;
 }

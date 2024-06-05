@@ -1,30 +1,19 @@
 import { useState, useEffect } from "react";
-
+import { Link } from "react-router-dom";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 import "./ItemDetailContainer.css";
 import { doc, getDoc } from "firebase/firestore";
 import db from "../../db/db";
 
+import { SyncLoader } from "react-spinners";
+
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState({});
   const { idProduct } = useParams();
 
-  // const getProduct = () => {
-  //   const productRef = doc(db, "products", idProduct);
-  //   getDoc(productRef)
-  //     .then((productFromDataBase) => {
-  //       const data = {
-  //         id: productFromDataBase.id,
-  //         ...productFromDataBase.data(),
-  //       };
-  //       setProduct(data);
-  //     })
-  //     .catch((error) => {
-  //       alert(error);
-  //     })
-  //     .finally();
-  // };
+  const [productExistence, setProductExistence] = useState("loading");
+
   const getProduct = async () => {
     try {
       const productRef = doc(db, "products", idProduct);
@@ -35,14 +24,15 @@ const ItemDetailContainer = () => {
           ...productFromDataBase.data(),
         };
         setProduct(data);
+        setProductExistence("exists");
       } else {
-        alert("No such document!");
+        setProductExistence("dont exist");
       }
     } catch (error) {
-      alert("Error fetching product: " + error.message);
+      console.log("Error fetching product: " + error.message);
     } finally {
       // Aquí puedes hacer algo independientemente del resultado
-      console.log("Fetch attempt finished");
+      console.log();
     }
   };
 
@@ -50,7 +40,26 @@ const ItemDetailContainer = () => {
     getProduct();
   }, [idProduct]);
 
-  return <ItemDetail product={product} />;
+  return (
+    <div className="item-detail">
+      {productExistence === "exists" ? (
+        <ItemDetail product={product} />
+      ) : productExistence === "loading" ? (
+        <div className="spinner-container">
+          <SyncLoader color="#2462E9" className="spinner" />
+        </div>
+      ) : (
+        <div className="product-not-found">
+          <p className="product-not-found-message">
+            Lo siento, el producto que buscas no existe
+          </p>
+          <Link to="/" className="back-home">
+            Volver a la home
+          </Link>
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default ItemDetailContainer;
