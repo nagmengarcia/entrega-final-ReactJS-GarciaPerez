@@ -34,8 +34,8 @@ const Cart = () => {
       <h1 className="cart-h1"> Tu carrito </h1>
       <div className="cart-titles">
         <p>Producto</p>
-        <p>Cantidad</p>
-        <p>Total</p>
+        <p>Modificar</p>
+        <p>Precio</p>
       </div>
       <div className="cart-products-container">
         {cart.map((product) => (
@@ -58,7 +58,9 @@ const Cart = () => {
               </div>
             </div>
 
-            <p>AR$ {product.price * product.quantity}</p>
+            <p className="product-price">
+              AR$ {product.price * product.quantity}
+            </p>
             <button
               className="delete-item-button"
               onClick={() => deleteCartItemById(product.id)}

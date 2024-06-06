@@ -72,7 +72,11 @@
     width: 140px;
 }
 
-
+.product-price{
+    color: #55aa55;
+    font-family: monospace;
+    font-size: 1.125rem;
+}
 .delete-cart-button{
     font-family: "Anybody", sans-serif;
     background-color: red;
