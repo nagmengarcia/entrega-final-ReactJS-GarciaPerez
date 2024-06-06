@@ -30,40 +30,51 @@ const Cart = () => {
   }
 
   return (
-    <div className="cart-products-container">
-      {cart.map((product) => (
-        <div key={product.id} className="cart-product-item">
-          <img
-            src={product.image}
-            alt={product.name}
-            className="cart-product-item__image"
-          />
-          <div className="cart-product-item__name-and-quantity">
-            <p className="cart-product-item__product-name">{product.name}</p>
-            {product.quantity > 1 ? (
-              <p className="cart-product-item__product-quantity">
-                x{product.quantity}
-              </p>
-            ) : (
-              <p className="cart-product-item__product-quantity"></p>
-            )}
+    <div className="cart-container">
+      <h1 className="cart-h1"> Tu carrito </h1>
+      <div className="cart-titles">
+        <p>Producto</p>
+        <p>Cantidad</p>
+        <p>Total</p>
+      </div>
+      <div className="cart-products-container">
+        {cart.map((product) => (
+          <div key={product.id} className="cart-product-item">
+            <div className="cart-item-image-and-price">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="cart-item__image"
+              />
+              <div className="cart-item__name-quantity-and-price">
+                {product.quantity > 1 ? (
+                  <h2 className="cart-item-h2">
+                    {product.name} x{product.quantity}
+                  </h2>
+                ) : (
+                  <h2 className="cart-item-h2">{product.name}</h2>
+                )}
+                <p className="price-per-unity">c/u AR${product.price}</p>
+              </div>
+            </div>
+
+            <p>AR$ {product.price * product.quantity}</p>
+            <button
+              className="delete-item-button"
+              onClick={() => deleteCartItemById(product.id)}
+            >
+              <IoTrashOutline size={24} color="white" />
+            </button>
           </div>
-          <p>AR$ {product.price * product.quantity}</p>
-          <button
-            className="delete-item-button"
-            onClick={() => deleteCartItemById(product.id)}
-          >
-            <IoTrashOutline size={24} color="white" />
-          </button>
-        </div>
-      ))}
-      <p>Precio total: ${totalPrice().toLocaleString("es-ES")}</p>
-      <button className="delete-cart-button" onClick={deleteCart}>
-        Eliminar carrito
-      </button>
-      <Link to="/checkout" className="go-checkout">
-        Ir a pagar
-      </Link>
+        ))}
+        <p>Precio total: ${totalPrice().toLocaleString("es-ES")}</p>
+        <button className="delete-cart-button" onClick={deleteCart}>
+          Eliminar carrito
+        </button>
+        <Link to="/checkout" className="go-checkout">
+          Ir a pagar
+        </Link>
+      </div>
     </div>
   );
 };
