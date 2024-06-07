@@ -1,3 +1,46 @@
+.item-list-container{
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    max-width: 100vw;
+    overflow: hidden;
+}
+/*---------------------------*/
+/* Condicional Categorias ⏬*/
+.categories-container{
+    margin-top:8rem;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: -.02rem;
+    color: #564e5652;
+    padding-left: 4rem;
+}
+.categories-container__span{
+    color: #564E56;
+    margin-left: .25rem;
+    text-decoration: underline;
+}
+/*---------------------------*/
+/* Condicional Home ⏬*/
+.landing-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    align-items: flex-start;
+    margin: 5rem 0 0 0;
+}
+.hero-image{
+    width: 100vw;
+}
+.welcome-message{
+    font-family: "Work Sans", sans-serif;
+    font-size: 2.5rem;
+    color: #564E56;
+    font-weight: 600;
+    margin: 2rem auto 0 auto;   
+}
+/*---------------------------*/
+/* Componente ItemList ⏬*/
 .card-item-container{
     width: calc( 100% - 8rem);
     margin: 0 auto;
@@ -9,7 +52,8 @@
     gap: 1rem;
     font-family: "Work Sans", sans-serif;
 }
-
+/*---------------------------*/
+/* Componente Item ⏬*/
 .card-item{
     margin: 0;
     max-width: calc( 25% -  .75rem); 
@@ -22,89 +66,33 @@
     gap: 1rem;
     justify-items:flex-start;
     overflow: hidden;
-    text-decoration: none;
-    
+    text-decoration: none;   
 }
-
 .card-item:hover {
      box-shadow: 0 0 1rem #778b9423; 
 }
-
 .card-item__img{
     width: auto;
 }
-
 .card-item__product-title{
     font-family: "Work Sans" sans-serif;
     font-size: 1.25rem;
     line-height: 1.5;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: -.04rem;
-    margin: 1rem 1rem 0 1rem;
+    margin: .5rem 1.2rem 0 1rem;
 }
-
 .card-item__product-price{
     font-family: monospace;
     font-weight: 500;
     color: #55AA55;
     font-size: 1.125rem;
-    margin: 0 1rem;
+    margin: 0 1rem 1rem 1rem;
 }
-
-.item-list-container{
-    display: flex;
-    flex-direction: column;
-    /* align-items: center; */
-    max-width: 100vw;
-    overflow: hidden;
-}
-
+/*---------------------------*/
+/* Contenedor de pantalla de carga ⏬*/
 .loader-container {
         margin: 0 auto;
         align-self: center;
-        padding: 120px auto;
-}
-
-.first-titles{
-    max-width: 100%;
-    width: 100vw;
-    display: flex;
-    overflow: hidden;
-
-}
-
-.landing-container{
-    display: flex;
-    flex-direction: column;
-    max-width: 100%;
-    align-items: flex-start;
-    margin: 5rem 0 0 0;
-}
-.hero-image{
-    width: 100vw;
-}
-
-.welcome-message{
-    font-family: "Work Sans", sans-serif;
-    font-size: 2.5rem;
-    color: #564E56;
-    font-weight: 600;
-    margin: 2rem auto 0 auto;   
-}
-
-
-.categories-container{
-    font-family: "Work Sans", sans-serif;
-    margin-top:8rem;
-    font-size: 1.25rem;
-    font-weight: 500;
-    letter-spacing: -.02rem;
-    color: #564e5652;
-    padding-left: 4rem;
-}
-
-.saludo-highlight{
-    color: #564E56;
-    margin-left: .25rem;
-    text-decoration: underline;
+        padding: 8rem auto;
 }
