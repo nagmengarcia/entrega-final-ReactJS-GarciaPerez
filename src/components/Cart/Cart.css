@@ -91,7 +91,6 @@
     display: flex;
     gap: 2rem;
     width: 40%;
-    background-color: aqua;
 }
 .cart-item__image{
     width: 140px;
@@ -157,7 +156,13 @@
     text-decoration: none;
 }
 
+/* item count */
 
+.cart-item-counter{
+    width: 200px;
+    border-radius: .5rem;
+    background-color: #eceaea;
+}
 
 
 

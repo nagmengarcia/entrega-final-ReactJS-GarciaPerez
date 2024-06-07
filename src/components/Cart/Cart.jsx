@@ -1,15 +1,13 @@
 import { useContext } from "react";
 import { CartContext } from "../../context/CartContext";
-import { IoTrashOutline } from "react-icons/io5";
-import { IoAddOutline } from "react-icons/io5";
-import { IoRemoveOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import ItemCount from "../ItemCount/ItemCount";
+import CartItemCount from "../CartItemCount/CartItemCount";
+import CartItems from "./CartItems";
 
 import "./Cart.css";
 
-const Cart = () => {
-  const { cart, deleteCart, deleteCartItemById, totalPrice } =
+const Cart = ({ product, count }) => {
+  const { cart, deleteCart, totalPrice, updateCartItemQuantity } =
     useContext(CartContext);
 
   // early return 👇
@@ -38,47 +36,14 @@ const Cart = () => {
         <p className="p-two">MODIFICAR</p>
         <p className="p-three">PRECIO</p>
       </div>
-      <div className="cart-products-container">
-        {cart.map((product) => (
-          <div key={product.id} className="cart-product-item">
-            <div className="cart-item__image-name-and-price">
-              <img
-                src={product.image}
-                alt={product.name}
-                className="cart-item__image"
-              />
-              <div className="cart-item__name-quantity-and-price">
-                {product.quantity > 1 ? (
-                  <h2 className="cart-item-h2">
-                    {product.name} x{product.quantity}
-                  </h2>
-                ) : (
-                  <h2 className="cart-item-h2">{product.name}</h2>
-                )}
-                <p className="price-per-unity">c/u AR${product.price}</p>
-              </div>
-            </div>
-
-            <p className="product-price">
-              AR$ {product.price * product.quantity}
-            </p>
-
-            <button
-              className="delete-item-button"
-              onClick={() => deleteCartItemById(product.id)}
-            >
-              <IoTrashOutline size={24} color="white" />
-            </button>
-          </div>
-        ))}
-        <p>Precio total: ${totalPrice().toLocaleString("es-ES")}</p>
-        <button className="delete-cart-button" onClick={deleteCart}>
-          Eliminar carrito
-        </button>
-        <Link to="/checkout" className="go-checkout">
-          Ir a pagar
-        </Link>
-      </div>
+      <CartItems />
+      <p>Precio total: ${totalPrice().toLocaleString("es-ES")}</p>
+      <button className="delete-cart-button" onClick={deleteCart}>
+        Eliminar carrito
+      </button>
+      <Link to="/checkout" className="go-checkout">
+        Ir a pagar
+      </Link>
     </div>
   );
 };
