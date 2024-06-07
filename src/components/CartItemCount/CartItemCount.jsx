@@ -1,19 +1,28 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import CartItemCounter from "./CartItemCounter";
+import { CartContext } from "../../context/CartContext";
+CartContext;
 
-const CartItemCount = ({ stock, updateProductQuantity, counterN }) => {
-  const [count, setCount] = useState(counterN);
+const CartItemCount = ({ productId, stock, itemCount }) => {
+  const [count, setCount] = useState(itemCount);
+
+  const { cart, deleteCartItemById, updateCartItemQuantity } =
+    useContext(CartContext);
+
+  const updateQuantity = (newQuantity) => {
+    updateCartItemQuantity(productId, newQuantity);
+  };
 
   const handleClickDecrement = () => {
     if (count > 1) {
       setCount(count - 1);
-      updateProductQuantity(count);
+      updateQuantity(count);
     }
   };
   const handleClickIncrement = () => {
     if (count < stock) {
       setCount(count + 1);
-      updateProductQuantity(count);
+      updateQuantity(count);
     }
   };
 

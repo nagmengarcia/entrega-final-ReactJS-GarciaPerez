@@ -36,12 +36,11 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const updateCartItemQuantity = (item, newQuantity) => {
-    setCart((previousItems) =>
-      previousItems.map((cartProduct) => cartProduct.id === item.id)
-    )
-      ? { ...cartProduct, quantity: newQuantity }
-      : cartProduct;
+  const updateCartItemQuantity = (productKey, newQuantity) => {
+    const newProds = cart.map((p) => {
+      p.id === productKey ? { ...p, quantity: newQuantity } : cart;
+    });
+    setCart(newProds);
   };
 
   const totalCartItemAmount = () => {

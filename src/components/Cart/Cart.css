@@ -33,11 +33,12 @@
 /* cart */
 .cart-container{
     padding: 4rem ;
+    padding-top: 8rem;
     display: flex;
     flex-direction: column;
     font-family: "Work Sans", sans-serif;
     width: calc(100% - 8rem);
-    background-color: #4C7EFF;
+    background-color: #E8EDFB;
 }
 .cart-h1{
     font-size: 2.5rem;
@@ -45,19 +46,19 @@
     font-weight: 600;
 }
 .cart-titles{
+    padding-right: 8rem;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 .p-one{ 
     width: 40%;
-    margin-left: 10.75rem;
     font-weight: 600;  
     letter-spacing: .05rem;
     color: #564E56;
 }
 .p-two{   
-    margin-left: 10.75rem;
+    width: 8%;
     font-weight: 600;  
     letter-spacing: .05rem;
     color: #564E56;
@@ -159,7 +160,12 @@
 /* item count */
 
 .cart-item-counter{
+align-self: center;
     width: 200px;
+    height: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: .5rem;
     background-color: #eceaea;
 }
