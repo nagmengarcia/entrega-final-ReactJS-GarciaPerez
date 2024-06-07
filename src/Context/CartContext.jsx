@@ -36,12 +36,33 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const updateCartItemQuantity = (productId, newQuantity) => {
-    const newProds = cart.map((p) => {
-      p.id === productId ? { ...p, quantity: newQuantity } : cart;
-    });
-    setCart(newProds);
+  // arreglar esta funcion.
+  const updateQuantity = (productId, newQuantity) => {
+    console.log(cart);
+
+    const newCart = cart.map((product) =>
+      product.id === productId
+        ? { ...product, quantity: newQuantity }
+        : productId
+    );
+    setCart(newCart);
+    console.log(cart);
   };
+
+  // pruebo con nuevas funciones
+
+  const handleIncrement = (productId) => {
+    const newCart = cart.map((prevProd) => {
+      prevProd.id === productId
+        ? console.log({ ...prevProd })
+        : console.log("popote");
+    });
+
+    console.log(productId);
+    console.log(cart[0].id);
+  };
+
+  // fin de la pruebas
 
   const totalCartItemAmount = () => {
     const totalItemAmount = cart.reduce(
@@ -85,7 +106,7 @@ const CartProvider = ({ children }) => {
         deleteCartItemById,
         totalPrice,
         isInCart,
-        updateCartItemQuantity,
+        updateQuantity,
       }}
     >
       {children}

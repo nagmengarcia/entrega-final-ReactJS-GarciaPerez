@@ -3,9 +3,9 @@ import { CartContext } from "../../context/CartContext";
 import { IoTrashOutline } from "react-icons/io5";
 import CartItemCount from "../CartItemCount/CartItemCount";
 
-const CartItems = ({ product }) => {
+const CartItems = () => {
   const { cart, deleteCartItemById } = useContext(CartContext);
-
+  console.log(cart);
   return (
     <div className="cart-products-container">
       {cart.map((product) => (
@@ -28,11 +28,10 @@ const CartItems = ({ product }) => {
             </div>
           </div>
           <CartItemCount
-            productId={product.id}
+            id={product.id}
             stock={product.stock}
-            itemCount={product.quantity}
+            quantity={product.quantity}
           />
-
           <p className="product-price">
             AR$ {product.price * product.quantity}
           </p>

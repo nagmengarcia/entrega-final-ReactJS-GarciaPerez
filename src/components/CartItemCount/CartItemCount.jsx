@@ -1,29 +1,27 @@
 import { useContext, useState } from "react";
 import CartItemCounter from "./CartItemCounter";
 import { CartContext } from "../../context/CartContext";
-CartContext;
+import { update } from "firebase/database";
 
-const CartItemCount = ({ productId, stock, itemCount }) => {
-  const [count, setCount] = useState(itemCount);
+const CartItemCount = ({ id, stock, quantity }) => {
+  const [count, setCount] = useState(quantity);
 
-  const { cart, deleteCartItemById, updateCartItemQuantity } =
-    useContext(CartContext);
+  const { cart, updateQuantity } = useContext(CartContext);
 
-  const updateQuantity = (newQuantity) => {
-    updateCartItemQuantity(productId, newQuantity);
-  };
-
-  const handleClickDecrement = () => {
+  const handleClickDecrement = (id) => {
     if (count > 1) {
       setCount(count - 1);
-      console.log(productId);
-      updateCartItemQuantity(productId, count);
+      console.log(id);
+      updateQuantity(id, count);
+      // hasta el productId funciona bien: lo llama.
     }
   };
-  const handleClickIncrement = () => {
+  const handleClickIncrement = (id) => {
     if (count < stock) {
       setCount(count + 1);
-      console.log(productId);
+      console.log(id);
+
+      updateQuantity(id, count);
     }
   };
 
@@ -32,6 +30,7 @@ const CartItemCount = ({ productId, stock, itemCount }) => {
       handleClickDecrement={handleClickDecrement}
       handleClickIncrement={handleClickIncrement}
       count={count}
+      id={id}
     />
   );
 };
