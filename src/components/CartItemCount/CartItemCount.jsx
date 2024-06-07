@@ -16,13 +16,14 @@ const CartItemCount = ({ productId, stock, itemCount }) => {
   const handleClickDecrement = () => {
     if (count > 1) {
       setCount(count - 1);
-      updateQuantity(count);
+      console.log(productId);
+      updateCartItemQuantity(productId, count);
     }
   };
   const handleClickIncrement = () => {
     if (count < stock) {
       setCount(count + 1);
-      updateQuantity(count);
+      console.log(productId);
     }
   };
 

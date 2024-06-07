@@ -36,9 +36,9 @@ const CartProvider = ({ children }) => {
     }
   };
 
-  const updateCartItemQuantity = (productKey, newQuantity) => {
+  const updateCartItemQuantity = (productId, newQuantity) => {
     const newProds = cart.map((p) => {
-      p.id === productKey ? { ...p, quantity: newQuantity } : cart;
+      p.id === productId ? { ...p, quantity: newQuantity } : cart;
     });
     setCart(newProds);
   };
