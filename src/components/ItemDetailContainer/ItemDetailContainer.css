@@ -2,15 +2,13 @@
     padding: 1rem 0;
 }
 .item-detail-container{
-    margin: 0;
     width: 100%;
     padding: 10rem 0;
     display: flex;
     flex-direction: row;
     gap: 8rem;
     color: #564E56;
-    justify-content: flex-start;
-    font-family: 'Work Sans', sans-serif;   
+    justify-content: flex-start;   
 }
 
 .item-detail-container__image{

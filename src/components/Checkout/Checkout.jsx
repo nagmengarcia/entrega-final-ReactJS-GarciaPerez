@@ -1,6 +1,6 @@
 import { useContext, useState, useRef } from "react";
 import Form from "./Form";
-import { CartContext } from "../../context/CartContext";
+import { CartContext } from "../../context/CartContext.jsx";
 import { IoCopyOutline } from "react-icons/io5";
 import { addDoc, collection, doc, setDoc, Timestamp } from "firebase/firestore";
 import db from "../../db/db.js";

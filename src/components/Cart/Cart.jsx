@@ -3,6 +3,7 @@ import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 import CartItemCount from "../CartItemCount/CartItemCount";
 import CartItems from "./CartItems";
+import EmptyCartMessage from "./EmptyCartMessage/EmptyCartMessage";
 
 import "./Cart.css";
 
@@ -12,20 +13,7 @@ const Cart = ({ product, count }) => {
 
   // early return 👇
   if (cart.length === 0) {
-    return (
-      <div className="empty-cart-message">
-        <h1 className="empty-cart-title">
-          Oh, no ! Parece que tu carrito se encuentra vacío 😞
-        </h1>
-        <img
-          src="https://i.pinimg.com/originals/d9/e2/6e/d9e26e21fd798286ef10c6ec4c991af4.gif"
-          width={420}
-        />
-        <Link to="/" className="back-home-button">
-          Regresar a la home
-        </Link>
-      </div>
-    );
+    return <EmptyCartMessage />;
   }
 
   return (
