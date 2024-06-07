@@ -1,114 +1,4 @@
-.cart-container{
-    padding: 4rem ;
-    display: flex;
-    flex-direction: column;
-    font-family: "Work Sans", sans-serif;
-    width: calc(100% - 8rem);
-    background-color: #4C7EFF;
-}
-.cart-h1{
-    font-size: 2.5rem;
-    color: #564E56;
-    font-weight: 600;
-}
-
-.cart-item__name-quantity-and-price{
-    display: flex;
-    flex-direction: column;
-    align-self: center;
-    text-align: left;
-    max-width: 28ch;
-    justify-content: flex-start;
-    gap: .8rem;
-}
-.cart-item-h2{
-    font-size: 1.4rem;
-    color: #564E56;
-    font-weight: 600;
-    margin: 0;
-}
-
-.price-per-unity{
-    font-family: monospace;
-    color: #a9a9a9;
-    margin: 0;
-}
-
-
-.cart-titles{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-
-
-.cart-products-container{
-    padding: 1rem 0 0 0;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    gap: 1rem;
-    color: #564E56;
-}
-
-.cart-product-item{
-    display: flex;
-    gap: 2rem;
-    background-color: #fdfdfd;
-    border-radius: .5rem;
-    overflow: hidden;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0 4rem 0 0;
-}
-
-.cart-item-image-and-price{
-    display: flex;
-    gap: 2rem;
-}
-.cart-item__image{
-    width: 140px;
-}
-
-.product-price{
-    color: #55aa55;
-    font-family: monospace;
-    font-size: 1.125rem;
-}
-.delete-cart-button{
-    font-family: "Anybody", sans-serif;
-    background-color: red;
-    color: #FCFcFc;
-    border: none;
-    padding: 1rem 2rem;
-    font-weight: 600;
-    font-size: 1rem;
-    border-radius: 8px;
-    width: fit-content;
-}
-.go-checkout{
-    font-family: "Anybody", sans-serif;
-    background-color:#4C7EFF;
-    color: #fdfdfd;
-    border: none;
-    padding: 1rem 2rem;
-    font-weight: 600;
-    font-size: 1rem;
-    border-radius: 8px;
-    width: fit-content;
-    text-decoration: none;
-}
-.delete-item-button{
-    background-color: rgb(243, 49, 49);
-    display: flex;
-    border: none;
-    padding: 1rem 1rem;
-    border-radius: 8rem;
-    justify-self: flex-end;
-}
-
+/* cart early return */
 .empty-cart-message{
     padding-top: 12rem;
     display: flex;
@@ -139,3 +29,145 @@
     font-size: 1rem;
     width: fit-content;
 }
+
+/* cart */
+.cart-container{
+    padding: 4rem ;
+    display: flex;
+    flex-direction: column;
+    font-family: "Work Sans", sans-serif;
+    width: calc(100% - 8rem);
+    background-color: #4C7EFF;
+}
+.cart-h1{
+    font-size: 2.5rem;
+    color: #564E56;
+    font-weight: 600;
+}
+.cart-titles{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.p-one{ 
+    width: 40%;
+    margin-left: 10.75rem;
+    font-weight: 600;  
+    letter-spacing: .05rem;
+    color: #564E56;
+}
+.p-two{   
+    margin-left: 10.75rem;
+    font-weight: 600;  
+    letter-spacing: .05rem;
+    color: #564E56;
+}
+.p-three{   
+    margin-left: 10.75rem;
+    font-weight: 600;  
+    letter-spacing: .05rem;
+    color: #564E56;
+}
+.cart-products-container{
+    padding: 1rem 0 0 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1rem;
+    color: #564E56;
+}
+.cart-product-item{
+    display: flex;
+    gap: 2rem;
+    background-color: #fdfdfd;
+    border-radius: .5rem;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 ;
+}
+.cart-item__image-name-and-price{
+    display: flex;
+    gap: 2rem;
+    width: 40%;
+    background-color: aqua;
+}
+.cart-item__image{
+    width: 140px;
+}
+.cart-item__name-quantity-and-price{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    text-align: left;
+    max-width: 28ch;
+    justify-content: flex-start;
+    gap: .8rem;
+}
+.cart-item-h2{
+    font-size: 1.4rem;
+    color: #564E56;
+    font-weight: 600;
+    margin: 0;
+}
+.price-per-unity{
+    font-family: monospace;
+    color: #a9a9a9;
+    margin: 0;
+}
+.product-price{
+    color: #55aa55;
+    font-family: monospace;
+    font-size: 1.125rem;
+}
+.delete-item-button{
+    background-color: rgb(153, 153, 153);
+    display: flex;
+    border: none;
+    padding: 3.625rem 1rem;
+    justify-self: flex-end;
+}
+.delete-item-button:hover{
+    background-color: rgb(243, 49, 49);
+    display: flex;
+    border: none;
+    padding: 3.625rem 1rem;
+    justify-self: flex-end;
+}
+.delete-cart-button{
+    background-color: red;
+    color: #FCFcFc;
+    border: none;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    width: fit-content;
+}
+.go-checkout{
+    background-color:#4C7EFF;
+    color: #fdfdfd;
+    border: none;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    font-size: 1rem;
+    border-radius: 8px;
+    width: fit-content;
+    text-decoration: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -4,6 +4,7 @@ import { IoTrashOutline } from "react-icons/io5";
 import { IoAddOutline } from "react-icons/io5";
 import { IoRemoveOutline } from "react-icons/io5";
 import { Link } from "react-router-dom";
+import ItemCount from "../ItemCount/ItemCount";
 
 import "./Cart.css";
 
@@ -33,14 +34,14 @@ const Cart = () => {
     <div className="cart-container">
       <h1 className="cart-h1"> Tu carrito </h1>
       <div className="cart-titles">
-        <p>Producto</p>
-        <p>Modificar</p>
-        <p>Precio</p>
+        <p className="p-one">PRODUCTO</p>
+        <p className="p-two">MODIFICAR</p>
+        <p className="p-three">PRECIO</p>
       </div>
       <div className="cart-products-container">
         {cart.map((product) => (
           <div key={product.id} className="cart-product-item">
-            <div className="cart-item-image-and-price">
+            <div className="cart-item__image-name-and-price">
               <img
                 src={product.image}
                 alt={product.name}
@@ -61,6 +62,7 @@ const Cart = () => {
             <p className="product-price">
               AR$ {product.price * product.quantity}
             </p>
+
             <button
               className="delete-item-button"
               onClick={() => deleteCartItemById(product.id)}
