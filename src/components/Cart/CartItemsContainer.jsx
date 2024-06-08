@@ -5,7 +5,6 @@ import CartItemCount from "../CartItemCount/CartItemCount";
 
 const CartItemsContainer = () => {
   const { cart, deleteCartItemById } = useContext(CartContext);
-  console.log("PEPE", cart);
   return (
     <div className="cart-products-container">
       {cart.map((product) => (
@@ -27,20 +26,25 @@ const CartItemsContainer = () => {
               <p className="price-per-unity">c/u AR${product.price}</p>
             </div>
           </div>
-          <CartItemCount
-            id={product.id}
-            stock={product.stock}
-            quantity={product.quantity}
-          />
-          <p className="product-price">
-            AR$ {product.price * product.quantity}
-          </p>
-          <button
-            className="delete-item-button"
-            onClick={() => deleteCartItemById(product.id)}
-          >
-            <IoTrashOutline size={24} color="white" />
-          </button>
+          <div className="cart-item-second-half">
+            <div className="cart-item-count-container">
+              <CartItemCount
+                id={product.id}
+                stock={product.stock}
+                quantity={product.quantity}
+              />
+            </div>
+            <p className="product-price">
+              AR$ {product.price * product.quantity}
+            </p>
+
+            <button
+              className="delete-item-button"
+              onClick={() => deleteCartItemById(product.id)}
+            >
+              <IoTrashOutline size={24} color="white" />
+            </button>
+          </div>
         </div>
       ))}
     </div>

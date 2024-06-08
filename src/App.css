@@ -27,3 +27,7 @@ body{
     width: fit-content;
     text-align: center;
 }
+
+.primary-button:hover{
+    background-color: #564E56;
+}

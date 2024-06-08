@@ -8,8 +8,7 @@ import "./Cart.css";
 import { BiPointer } from "react-icons/bi";
 
 const Cart = () => {
-  const { cart, deleteCart, totalPrice, updateCartItemQuantity } =
-    useContext(CartContext);
+  const { cart, deleteCart, totalPrice } = useContext(CartContext);
 
   // early return 👇
   if (cart.length === 0) {
@@ -18,11 +17,8 @@ const Cart = () => {
 
   return (
     <div className="cart-container">
-      <div className="cart-h1-and-delete-button">
+      <div className="cart-h1-container">
         <h1 className="cart-h1"> Tu carrito </h1>
-        <button className="delete-cart-button" onClick={deleteCart}>
-          Eliminar carrito
-        </button>
       </div>
       <div className="cart-titles">
         <p className="p-one">PRODUCTO</p>
@@ -33,10 +29,14 @@ const Cart = () => {
       <p className="total-price">
         Precio total: ${totalPrice().toLocaleString("es-ES")}
       </p>
-
-      <Link to="/checkout" className="primary-button left-button">
-        Ir a pagar
-      </Link>
+      <div className="cart-button-group">
+        <button className="delete-cart-button" onClick={deleteCart}>
+          Eliminar carrito
+        </button>
+        <Link to="/checkout" className="primary-button left-button">
+          Ir a pagar
+        </Link>
+      </div>
     </div>
   );
 };

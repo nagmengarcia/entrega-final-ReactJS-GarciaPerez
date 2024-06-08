@@ -1,24 +1,33 @@
+.checkout-cont{
+    padding: 8rem 0 ;   
+}
+.checkout-cont h1{
+    color:  #564E56; 
+    margin: 2rem 0 ;
+    text-align: center;
+}
 form {
     display: flex;
     flex-direction: column;
-    font-family: "Anybody" sans-serif;
+    font-family: "Work Sans", sans-serif;
     width: 600px;
-    margin: 4rem auto 0 auto;
+    padding: 4rem auto 0 auto;
+    margin: 0 auto;
     gap: 1rem;
 }
 
 label{
-    color: #fdfdfd;
+    color: #564E56;
     margin-bottom: -.5rem;
-    font-family: "Anybody", sans-serif;
+    font-family: "Work Sans", sans-serif;
 
 }
 
 input{
     height: 1.4rem;
     font-family: monospace;
-    color: #fdfdfd;
-    background-color: #282828;
+    color: #564E56;
+    background-color: #fdfdfd;
     border: none;
     border-radius: .5rem;
     padding: 1rem;
@@ -51,10 +60,15 @@ input{
     text-align: center;
 }
 
+
+
+.new-order-generated{
+    padding: 8rem 0;
+    color: #564E56;
+    font-family: "Work Sans", sans-serif;
+}
 .generated-order{
     margin: 2rem auto 0 auto;
-    color: #fdfdfd;
-    font-family: "Anybody", sans-serif;
     display: flex;
     flex-direction: column;
     gap: 1rem;
@@ -63,23 +77,23 @@ input{
 }
 
 .order-id-container{
-    
     flex-direction: row;
     
 
 }
 
 .generated-order__key{
-    color: #fdfdfd82;
     margin: 0;
 }
 .order {
     margin: 0;
-    color: #fdfdfd;
     padding: .5rem 1rem;
     border-radius: .5rem;
-    background-color: #fdfdfd0b;
+    background-color: #4C7EFF;
     display: flex;
+    color: white;
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
 }
 

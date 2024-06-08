@@ -7,9 +7,9 @@ const Form = ({
 }) => {
   return (
     <form onSubmit={handleSubmitForm}>
-      <label htmlFor="name">Nombre: </label>
+      <label htmlFor="name">Nombre y Apellido: </label>
       <input
-        placeholder="John Doe"
+        placeholder="Maximo Cosetti"
         type="text"
         name="nombre"
         value={formData.nombre}
@@ -25,7 +25,7 @@ const Form = ({
       />
       <label htmlFor="mail">Mail: </label>
       <input
-        placeholder="mail@ejemplo.com"
+        placeholder="mcosetti@ejemplo.com"
         type="text"
         name="mail"
         value={formData.mail}
@@ -33,7 +33,7 @@ const Form = ({
       />
       <label htmlFor="mailConfirmation">Confirmar mail: </label>
       <input
-        placeholder="mail@ejemplo.com"
+        placeholder="mcosetti@ejemplo.com"
         type="text"
         name="mailConfirmation"
         value={formData.mailConfirmation}

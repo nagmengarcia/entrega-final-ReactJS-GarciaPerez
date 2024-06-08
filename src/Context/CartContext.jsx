@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { toast } from "react-toastify";
 
 const CartContext = createContext();
 
@@ -13,6 +14,9 @@ const CartProvider = ({ children }) => {
           cartProduct.id === newProduct.id &&
           newProduct.stock >= cartProduct.quantity + newProduct.quantity
         ) {
+          toast.success(
+            `Se agrego correctamente ${newProduc.quantity} ${newProduct.name} al carrito `
+          );
           return {
             ...cartProduct,
             quantity: cartProduct.quantity + newProduct.quantity,
@@ -21,7 +25,7 @@ const CartProvider = ({ children }) => {
           cartProduct.id === newProduct.id &&
           newProduct.stock < cartProduct.quantity + newProduct.quantity
         ) {
-          alert("Llegaste al máximo de stock para este producto");
+          toast.error("Llegaste al máximo de stock para este producto");
           return {
             ...cartProduct,
             quantity: newProduct.stock,
@@ -41,7 +45,10 @@ const CartProvider = ({ children }) => {
   const incrementQuantity = (productId) => {
     const product = cart.find((p) => p.id === productId);
     if (!product) return;
-    if (product.quantity >= product.stock) return;
+    if (product.quantity >= product.stock)
+      return toast.warning(
+        `Llegaste al limite disponible para ${product.name}`
+      );
     product.quantity++;
     console.log("new cart", cart);
     setCart([...cart]);

@@ -119,12 +119,12 @@ const Checkout = () => {
   };
 
   return (
-    <div>
+    <div className="new-order-generated">
       {orderId ? (
         <div className="generated-order">
           <h2 className="generated-order__title"> Orden generada con exito!</h2>
           <p className="generated-order__key">
-            Guarda el siguiente token de seguimiento
+            Guarda el siguiente token para realizar seguimiento
           </p>
           <div className="order">
             <p ref={copyRef}>{orderId}</p>
@@ -135,13 +135,17 @@ const Checkout = () => {
           </div>
         </div>
       ) : (
-        <Form
-          formData={formData}
-          handleChangeInput={handleChangeInput}
-          handleSubmitForm={handleSubmitForm}
-          mailCoincidenceChecker={mailCoincidenceChecker}
-          showFormButton={showFormButton}
-        />
+        <div className="checkout-cont">
+          <h1> Completa tus datos</h1>
+
+          <Form
+            formData={formData}
+            handleChangeInput={handleChangeInput}
+            handleSubmitForm={handleSubmitForm}
+            mailCoincidenceChecker={mailCoincidenceChecker}
+            showFormButton={showFormButton}
+          />
+        </div>
       )}
     </div>
   );
