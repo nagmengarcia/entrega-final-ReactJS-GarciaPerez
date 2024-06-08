@@ -3,26 +3,26 @@ import { CartContext } from "../../context/CartContext";
 import { IoTrashOutline } from "react-icons/io5";
 import CartItemCount from "../CartItemCount/CartItemCount";
 
-const CartItems = () => {
+const CartItemsContainer = () => {
   const { cart, deleteCartItemById } = useContext(CartContext);
-  console.log(cart);
+  console.log("PEPE", cart);
   return (
     <div className="cart-products-container">
       {cart.map((product) => (
         <div key={product.id} className="cart-product-item">
           <div className="cart-item__image-name-and-price">
             <img
+              className="cart-item__image"
               src={product.image}
               alt={product.name}
-              className="cart-item__image"
             />
             <div className="cart-item__name-quantity-and-price">
               {product.quantity > 1 ? (
-                <h2 className="cart-item-h2">
+                <h2 className="cart-item__product-name">
                   {product.name} x{product.quantity}
                 </h2>
               ) : (
-                <h2 className="cart-item-h2">{product.name}</h2>
+                <h2 className="cart-item__product-name">{product.name}</h2>
               )}
               <p className="price-per-unity">c/u AR${product.price}</p>
             </div>
@@ -47,4 +47,4 @@ const CartItems = () => {
   );
 };
 
-export default CartItems;
+export default CartItemsContainer;

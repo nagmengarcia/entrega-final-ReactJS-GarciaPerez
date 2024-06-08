@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const EmptyCartMessage = () => {
   return (
     <div className="empty-cart-message">
-      <h1 className="empty-cart-title">
+      <h1 className="empty-cart-message__title">
         Oh, no ! Parece que tu carrito se encuentra vacío 😞
       </h1>
       <img

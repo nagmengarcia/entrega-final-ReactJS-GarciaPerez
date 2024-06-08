@@ -15,7 +15,6 @@ function App() {
       <CartProvider>
         <NavBar />
         <ToastContainer theme="dark" />
-
         <Routes>
           <Route path="/" element={<ItemListContainer />} />
           <Route path="/category/:idCategory" element={<ItemListContainer />} />

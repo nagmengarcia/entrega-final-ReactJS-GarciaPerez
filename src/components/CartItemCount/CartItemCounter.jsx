@@ -9,16 +9,16 @@ const CartItemCounter = ({
 }) => {
   return (
     <div className="cart-item-counter">
-      <div className="item-count__controls">
+      <div className="cart-item__controls">
         <button
-          className="item-count__control-button"
+          className="cart-item__control-button"
           onClick={() => handleClickDecrement(id)}
         >
           <IoRemoveOutline size={24} color="#564E56" />
         </button>
         <p>{count}</p>
         <button
-          className="item-count__control-button"
+          className="cart-item__control-button"
           onClick={() => handleClickIncrement(id)}
         >
           <IoAddOutline size={24} color="#564E56" />

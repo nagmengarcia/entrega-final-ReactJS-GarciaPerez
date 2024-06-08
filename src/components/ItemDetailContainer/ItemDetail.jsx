@@ -16,7 +16,7 @@ const ItemDetail = ({ product }) => {
       <img
         className="item-detail-container__image"
         src={product.image}
-        alt={product.description}
+        alt={product.name}
       />
       <div className="item-detail-container__product-detail">
         <h1 className="item-detail-container__product-name">{product.name}</h1>
@@ -33,8 +33,8 @@ const ItemDetail = ({ product }) => {
         </p>
         <div>
           {isInCart(product.id) === true ? (
-            <div className="go-to-cart-button-container">
-              <Link to="/cart" className="go-to-cart-button">
+            <div className="button-container">
+              <Link to="/cart" className="primary-button">
                 IR AL CARRITO
               </Link>
             </div>

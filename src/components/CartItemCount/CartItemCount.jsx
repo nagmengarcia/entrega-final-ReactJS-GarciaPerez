@@ -4,32 +4,21 @@ import { CartContext } from "../../context/CartContext";
 import { update } from "firebase/database";
 
 const CartItemCount = ({ id, stock, quantity }) => {
-  const [count, setCount] = useState(quantity);
-
-  const { cart, updateQuantity } = useContext(CartContext);
+  const { incrementQuantity, decrementQuantity } = useContext(CartContext);
 
   const handleClickDecrement = (id) => {
-    if (count > 1) {
-      setCount(count - 1);
-      console.log(id);
-      updateQuantity(id, count);
-      // hasta el productId funciona bien: lo llama.
-    }
+    decrementQuantity(id);
   };
-  const handleClickIncrement = (id) => {
-    if (count < stock) {
-      setCount(count + 1);
-      console.log(id);
 
-      updateQuantity(id, count);
-    }
+  const handleClickIncrement = (id) => {
+    incrementQuantity(id);
   };
 
   return (
     <CartItemCounter
       handleClickDecrement={handleClickDecrement}
       handleClickIncrement={handleClickIncrement}
-      count={count}
+      count={quantity}
       id={id}
     />
   );
