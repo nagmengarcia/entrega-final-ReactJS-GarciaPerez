@@ -14,7 +14,6 @@
 
 <img src="https://www.gstatic.com/mobilesdk/240501_mobilesdk/firebase_28dp.png" height="48px" width="48px"/>
 
-<div> sumar el resto de tecnologias</div>
 </div>
 
 ## Descripción
